@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, sans-serif; background-color: #FDFBF7; color: #1F2937; }
+::selection { background: #065f46; color: #fff; }
+
+/* Islamic 8-point star lattice pattern (inline SVG, low opacity) */
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23065f46' stroke-opacity='0.10' stroke-width='1'%3E%3Cpath d='M36 6 L42 30 L66 36 L42 42 L36 66 L30 42 L6 36 L30 30 Z'/%3E%3Ccircle cx='36' cy='36' r='7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+.islamic-pattern-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.12' stroke-width='1'%3E%3Cpath d='M36 6 L42 30 L66 36 L42 42 L36 66 L30 42 L6 36 L30 30 Z'/%3E%3Ccircle cx='36' cy='36' r='7'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+
+.gold-divider { display: flex; align-items: center; gap: 0.75rem; }
+.gold-divider::before, .gold-divider::after { content: ''; height: 1px; width: 3rem; background: #C9A227; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-up { animation: fadeUp 0.6s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-fade-up { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* Print: admission summary prints cleanly */
+@media print {
+  header, footer, .no-print { display: none !important; }
+  body { background: #fff; }
+}
